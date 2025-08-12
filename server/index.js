@@ -77,6 +77,7 @@ app.post('/api/spin', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`🚀 Spin & Win API on :${PORT}`);
 });
-app.get('*', (_req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'farcaster-mobile.html'));
-});
+app.use(express.static(path.join(__dirname, '..'), { dotfiles: 'ignore' }));
+app.get('/', (_req, res) =>
+  res.sendFile(path.join(__dirname, '..', 'farcaster-mobile.html'))
+);
