@@ -1,17 +1,15 @@
-// public/.well-known/farcaster.json
 {
-  "miniapp": {
-    "name": "Spin & Win",
-    "url": "https://your-domain.vercel.app",
-    "iconUrl": "https://your-domain.vercel.app/icon.png",
-    "description": "Free spin. If you win, we send ETH on Base.",
-    "termsUrl": "https://your-domain.vercel.app/terms",
-    "privacyUrl": "https://your-domain.vercel.app/privacy",
-    "contactEmail": "you@example.com"
-  },
   "accountAssociation": {
-    "header": "JWS",
-    "payload": "JWS",
-    "signature": "JWS"
+    "header": "",
+    "payload": "",
+    "signature": ""
+  },
+  "frame": {
+    "version": "1",
+    "name": "Spin & Win",
+    "homeUrl": "https://YOUR_DOMAIN/",
+    "iconUrl": "https://YOUR_DOMAIN/images/icon.png",
+    "splashBackgroundColor": "#000000",
+    "tags": ["game", "rewards", "base"]
   }
 }
