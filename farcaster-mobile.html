@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="fc:frame" content="vNext" />
+  <meta name="fc:frame:image" content="https://your-domain.com/og-image.png" />
+  <meta name="fc:frame:button:1" content="Spin" />
+  <meta name="fc:frame:button:2" content="Leaderboard" />
+  <meta name="fc:miniapp" content='{"version":"1","name":"Spin & Win","iconUrl":"https://your-domain.com/images/icon.png","homeUrl":"https://your-domain.com/farcaster-mobile.html","splashImageUrl":"https://your-domain.com/images/splash.png","splashBackgroundColor":"#1a1a2e","requiredChains":["eip155:8453"],"requiredCapabilities":["wallet.getEthereumProvider"],"primaryCategory":"games","description":"Spin the slots and win Base tokens instantly!"}' />
+  <title>Spin & Win - Farcaster Miniapp</title>
+  <link rel="stylesheet" href="farcaster-mobile.css" />
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+</head>
+<body>
+  <div class="app-container">
+    <!-- Top Bar - Mobile Optimized -->
+    <div class="top-bar">
+      <div id="user-handle">@talibgaming</div>
+      <div id="spins-remaining">5 spins left</div>
+    </div>
+
+    <!-- Main Game Area -->
+    <div class="game-area">
+      <!-- Slot Machine - Responsive Grid -->
+      <div class="slot-machine">
+          <div class="slot-grid">
+            <div class="slot-cell token-arb" data-symbol="ARB"><img src="images/arb.png" alt="ARB" /></div>
+            <div class="slot-cell token-op" data-symbol="OP"><img src="images/op.png" alt="OP" /></div>
+            <div class="slot-cell token-zora" data-symbol="ZORA"><img src="images/zora.png" alt="ZORA" /></div>
+            <div class="slot-cell token-zora" data-symbol="ZORA"><img src="images/zora.png" alt="ZORA" /></div>
+            <div class="slot-cell token-arb" data-symbol="ARB"><img src="images/arb.png" alt="ARB" /></div>
+            <div class="slot-cell token-op" data-symbol="OP"><img src="images/op.png" alt="OP" /></div>
+            <div class="slot-cell token-op" data-symbol="OP"><img src="images/op.png" alt="OP" /></div>
+            <div class="slot-cell token-zora" data-symbol="ZORA"><img src="images/zora.png" alt="ZORA" /></div>
+            <div class="slot-cell token-arb" data-symbol="ARB"><img src="images/arb.png" alt="ARB" /></div>
+          </div>
+      </div>
+
+      <!-- Spin Button - Large Touch Target -->
+      <button class="spin-button" id="spin-button">SPIN</button>
+      
+      <!-- Result Message -->
+      <div class="result-message" id="result-message"></div>
+    </div>
+
+    <!-- Screen Overlays -->
+    <div class="screen-overlay" id="feedScreen">
+      <div class="screen-header">
+        <div class="screen-title">Activity Feed</div>
+        <button class="close-btn" onclick="closeScreen('feed')">✖</button>
+      </div>
+      <div class="screen-content">
+        <div class="list-item">@user1 won 100 tokens!</div>
+        <div class="list-item">@user2 hit the jackpot!</div>
+        <div class="list-item">@user3 got 3 ARB tokens!</div>
+      </div>
+    </div>
+
+    <div class="screen-overlay" id="leaderboardScreen">
+      <div class="screen-header">
+        <div class="screen-title">Leaderboard</div>
+        <button class="close-btn" onclick="closeScreen('leaderboard')">✖</button>
+      </div>
+      <div class="screen-content">
+        <div class="list-item">1. @talibgaming - 5000 points</div>
+        <div class="list-item">2. @player2 - 3500 points</div>
+        <div class="list-item">3. @player3 - 2800 points</div>
+      </div>
+    </div>
+
+    <div class="screen-overlay" id="treasureScreen">
+      <div class="screen-header">
+        <div class="screen-title">Rewards</div>
+        <button class="close-btn" onclick="closeScreen('treasure')">✖</button>
+      </div>
+      <div class="screen-content">
+        <div class="list-item">🎁 Rewards coming soon!</div>
+      </div>
+    </div>
+
+    <!-- Navigation - Mobile Optimized -->
+    <div class="bottom-nav">
+      <div class="nav-item" onclick="openScreen('feed')">
+        <div class="nav-icon">📰</div>
+        <div class="nav-label">Feed</div>
+      </div>
+      <div class="nav-item" onclick="openScreen('leaderboard')">
+        <div class="nav-icon">🏆</div>
+        <div class="nav-label">Leaderboard</div>
+      </div>
+      <div class="nav-item" onclick="openScreen('treasure')">
+        <div class="nav-icon">🎁</div>
+        <div class="nav-label">Rewards</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="farcaster-mobile.js"></script>
+</body>
+</html>
