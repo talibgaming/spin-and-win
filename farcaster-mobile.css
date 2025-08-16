@@ -1,0 +1,332 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.hidden { display: none; }
+.connect-help {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 9999;
+}
+.connect-help-card {
+  width: min(92vw, 460px);
+  background: #111827;
+  color: #fff;
+  border-radius: 16px;
+  padding: 16px 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+.connect-help-card h3 { margin-bottom: 8px; font-size: 1.1rem; }
+.connect-help-card ul { margin: 8px 0 12px 18px; line-height: 1.35; }
+.connect-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.btn {
+  border: none; border-radius: 999px; padding: 8px 14px; font-weight: 600; cursor: pointer;
+  background: linear-gradient(135deg, #4cafef, #1e88e5); color: #fff; text-decoration: none;
+}
+.btn.secondary { background: #374151; }
+.link-btn { background: transparent; color: #9ca3af; border: none; padding: 8px 10px; cursor: pointer; }
+
+
+.connect-wallet-btn {
+  background: linear-gradient(135deg, #4cafef, #1e88e5);
+  border: none;
+  border-radius: 1rem;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.4rem 0.75rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.connect-wallet-btn:active {
+  opacity: 0.8;
+}
+
+/* Mobile-first responsive container */
+.app-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top bar - mobile optimized */
+.top-bar {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  color: white;
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+#user-handle {
+  color: #ffd700;
+}
+
+#spins-remaining {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+}
+
+/* Main game area */
+.game-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+/* Slot machine - responsive grid */
+.slot-machine {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.slot-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  aspect-ratio: 1;
+}
+
+.slot-cell {
+  width: clamp(60px, 20vw, 80px);
+  height: clamp(60px, 20vw, 80px);
+  background: white;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+  overflow: hidden;
+}
+
+.slot-cell img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.slot-cell.spinning {
+  animation: spin 0.5s ease-in-out;
+}
+
+@keyframes spin {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(360deg); }
+}
+
+/* Token symbols */
+.token-arb { background: linear-gradient(135deg, #28a0f0, #1e88e5); color: white; }
+.token-op { background: linear-gradient(135deg, #ff0420, #d32f2f); color: white; }
+.token-zora { background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: white; }
+
+/* Spin button - mobile optimized */
+.spin-button {
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  color: #000;
+  border: none;
+  border-radius: 2rem;
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+  min-height: 44px;
+  min-width: 120px;
+}
+
+.spin-button:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 10px rgba(255, 215, 0, 0.6);
+}
+
+.spin-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Result message */
+.result-message {
+  margin-top: 1rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-align: center;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  min-height: 2rem;
+}
+
+.result-message.win {
+  color: #ffd700;
+}
+
+.result-message.lose {
+  color: #ff6b6b;
+}
+
+/* Screen overlays */
+.screen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  display: none;
+  flex-direction: column;
+}
+
+.screen-overlay.active {
+  display: flex;
+}
+
+.screen-header {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.screen-title {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.screen-content {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+/* Lists */
+.list-item {
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: 0.5rem;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  color: white;
+}
+
+/* Navigation - mobile optimized */
+.bottom-nav {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.5rem 0;
+  position: sticky;
+  bottom: 0;
+}
+
+.nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  min-height: 44px;
+}
+
+.nav-item:active {
+  opacity: 0.7;
+}
+
+.nav-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.nav-label {
+  font-size: 0.75rem;
+  color: white;
+  font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 375px) {
+  html {
+    font-size: 14px;
+  }
+  
+  .slot-cell {
+    width: 55px;
+    height: 55px;
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .app-container {
+    max-width: 500px;
+  }
+  
+  .slot-cell {
+    width: 80px;
+    height: 80px;
+    font-size: 2.5rem;
+  }
+}
+
+/* Loading state */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
